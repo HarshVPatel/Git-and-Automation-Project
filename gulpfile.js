@@ -7,6 +7,11 @@ const concat = require('gulp-concat')
 const uglify = require('gulp-uglify')
 
 
+gulp.task('default', ['css', 'js', 'images'], () => {
+  gulp.watch('./src/css/*.css',['css'])
+});
+
+
 gulp.task('css', () =>
     gulp.src('src/css/*.css')
         .pipe(autoprefixer({
@@ -14,7 +19,7 @@ gulp.task('css', () =>
             cascade: false
         }))
         .pipe(cleanCSS({compatibility: 'ie8'}))
-        .pipe(gulp.dest('dist'))
+        .pipe(gulp.dest('dist')),
 
 );
 
@@ -32,4 +37,5 @@ gulp.task('js', () =>
         .pipe(concat('main.js'))
         .pipe(uglify())        
         .pipe(gulp.dest('dist'))
+       
 );
