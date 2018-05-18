@@ -6,8 +6,7 @@ const imagemin = require('gulp-imagemin')
 const concat = require('gulp-concat')
 const uglify = require('gulp-uglify')
 
-
-gulp.task('default', ['css', 'js', 'images'], () => {
+gulp.task('watch', ['css', 'js', 'images'], () => {
   gulp.watch('./src/css/*.css',['css'])
 });
 
@@ -39,3 +38,7 @@ gulp.task('js', () =>
         .pipe(gulp.dest('dist'))
        
 );
+
+gulp.task('default', ['css', 'image', 'js']);
+
+
